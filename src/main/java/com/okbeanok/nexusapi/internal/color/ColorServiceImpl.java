@@ -31,6 +31,7 @@ public class ColorServiceImpl implements ColorService {
 			Pattern.compile("#([A-Fa-f0-9]){6}")      // #FFFFFF
 	);
 
+
 	private static final Pattern STOP = Pattern.compile(
 			"<(rainbow|r)(#(\\d+))?(:(\\d*\\.?\\d+))?(:(\\d*\\.?\\d+))?(:(l|L|loop))?>|" +
 					"<(gradient|g)(#(\\d+))?((:#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})){2,})(:(l|L|loop))?>|" +
@@ -47,12 +48,33 @@ public class ColorServiceImpl implements ColorService {
 		if (input == null) {
 			return null;
 		}
-		// Full pipeline: rainbow → gradients → hex → legacy
+
+		if (input.isEmpty()) {
+			return input;
+		}
+
 		String parsed = input;
-		parsed = parseRainbow(parsed);
-		parsed = parseGradients(parsed);
-		parsed = parseHex(parsed);
-		parsed = parseLegacy(parsed);
+
+		// Rainbow syntax
+		if (parsed.indexOf('<') >= 0) {
+			parsed = parseRainbow(parsed);
+		}
+
+		// Gradient syntax
+		if (parsed.indexOf('<') >= 0) {
+			parsed = parseGradients(parsed);
+		}
+
+		// Hex colors always contain '#'
+		if (parsed.indexOf('#') >= 0) {
+			parsed = parseHex(parsed);
+		}
+
+		// Legacy colors always contain '&'
+		if (parsed.indexOf('&') >= 0) {
+			parsed = parseLegacy(parsed);
+		}
+
 		return parsed;
 	}
 
@@ -96,8 +118,7 @@ public class ColorServiceImpl implements ColorService {
 			int speed = -1;
 			float saturation = 1.0F;
 			float brightness = 1.0F;
-			boolean looping = getCaptureGroup(matcher, "looping") != null;
-
+			boolean looping = getCaptureGroup(matcher, "loop") != null;
 			String speedGroup = getCaptureGroup(matcher, "speed");
 			if (speedGroup != null) {
 				try {
@@ -236,6 +257,10 @@ public class ColorServiceImpl implements ColorService {
 	}
 
 	private static String parseHex(String message) {
+		if (message.indexOf('#') < 0) {
+			return message;
+		}
+
 		String parsed = message;
 
 		for (Pattern pattern : HEX_PATTERNS) {
@@ -253,6 +278,10 @@ public class ColorServiceImpl implements ColorService {
 	}
 
 	private static String parseLegacy(String message) {
+		if (message.indexOf('&') < 0) {
+			return message;
+		}
+
 		return ChatColor.translateAlternateColorCodes('&', message);
 	}
 

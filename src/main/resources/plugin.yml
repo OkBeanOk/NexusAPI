@@ -1,4 +1,4 @@
-name: TropicAPI
+name: NexusAPI
 version: '${project.version}'
 main: com.okbeanok.nexusapi.TropicAPI
 api-version: '1.21'

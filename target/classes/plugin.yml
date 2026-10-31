@@ -1,5 +1,5 @@
-name: TropicAPI
-version: '1.4.4'
+name: NexusAPI
+version: '1.4.5'
 main: com.okbeanok.nexusapi.TropicAPI
 api-version: '1.21'
 author: OkBeanOk, MigrateAccount

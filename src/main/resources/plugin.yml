@@ -1,6 +1,6 @@
 name: TropicAPI
 version: '${project.version}'
-main: com.okbeanok.tropicapi.TropicAPI
+main: com.okbeanok.nexusapi.TropicAPI
 api-version: '1.21'
 author: OkBeanOk, MigrateAccount
 description: TropicAPI is a core library for other Tropica plugins.

@@ -1,4 +1,4 @@
-package com.okbeanok.tropicapi.world.particle
+package com.okbeanok.nexusapi.world.particle
 
 import org.bukkit.Location
 import org.bukkit.Particle

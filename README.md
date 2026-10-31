@@ -68,7 +68,7 @@ Instead of every plugin shipping its own copies of color utilities, GUI helpers,
 
 ### 🎨 Color API
 
-**Packages:** `com.okbeanok.tropicapi.api.color`
+**Packages:** `com.okbeanok.nexusapi.api.color`
 
 Core color utilities (via `ColorService` and a static facade `ColorAPI`):
 
@@ -91,7 +91,7 @@ Core color utilities (via `ColorService` and a static facade `ColorAPI`):
 
 ### 📐 Centered Messages
 
-**Packages:** `com.okbeanok.tropicapi.api.message` (centered-related types)
+**Packages:** `com.okbeanok.nexusapi.api.message` (centered-related types)
 
 Key class: `CenteredMessagesAPI`
 
@@ -107,7 +107,7 @@ Key class: `CenteredMessagesAPI`
 
 ### 🧩 GUI System
 
-**Packages:** `com.okbeanok.tropicapi.api.gui`
+**Packages:** `com.okbeanok.nexusapi.api.gui`
 
 Main building blocks:
 
@@ -126,7 +126,7 @@ Designed so Tropic plugins can share a consistent GUI pattern while still allowi
 
 ### 💬 Messages API
 
-**Packages:** `com.okbeanok.tropicapi.api.message`
+**Packages:** `com.okbeanok.nexusapi.api.message`
 
 Message layer on top of color utilities:
 
@@ -146,7 +146,7 @@ Capabilities:
 
 ### ⏱ Task Scheduler
 
-**Packages:** `com.okbeanok.tropicapi.api.task`
+**Packages:** `com.okbeanok.nexusapi.api.task`
 
 - `TaskService` – Abstraction over Bukkit scheduler.
 - `Tasks` – Static facade for quick use.
@@ -163,7 +163,7 @@ Features:
 
 ### 📝 Config API
 
-**Packages:** `com.okbeanok.tropicapi.api.config`
+**Packages:** `com.okbeanok.nexusapi.api.config`
 
 - `ConfigService` – Service for loading config files.
 - `Configs` – Static facade.
@@ -179,7 +179,7 @@ Use cases:
 
 ### 👤 Player Profiles & Context
 
-**Packages:** `com.okbeanok.tropicapi.api.player`
+**Packages:** `com.okbeanok.nexusapi.api.player`
 
 - `PlayerProfile` – Simple read-only snapshot of player info (UUID, name, first/last join, banned/muted flags, etc.).
 - `PlayerProfileService` – Access profiles:
@@ -196,8 +196,8 @@ Good for sharing session-level state (current GUI, active flow, etc.) without ea
 
 **Packages:**
 
-- Integration: `com.okbeanok.tropicapi.api.integration`
-- Events: `com.okbeanok.tropicapi.api.event`
+- Integration: `com.okbeanok.nexusapi.api.integration`
+- Events: `com.okbeanok.nexusapi.api.event`
 
 **Integration:**
 
@@ -216,7 +216,7 @@ Good for sharing session-level state (current GUI, active flow, etc.) without ea
 
 ### 🧰 Utility Helpers
 
-**Packages:** `com.okbeanok.tropicapi.api.util`
+**Packages:** `com.okbeanok.nexusapi.api.util`
 
 Includes:
 
@@ -271,7 +271,7 @@ dependencies { compileOnly("com.okbeanok:TropicAPI:0.5.2-Development") // or imp
 ### ColorAPI
 ```
 
-java // import com.okbeanok.tropicapi.api.color.ColorAPI; import org.bukkit.entity.Player;
+java // import com.okbeanok.nexusapi.api.color.ColorAPI; import org.bukkit.entity.Player;
 public void sendColored(Player player) { String raw = "&aWelcome &bto &6Tropic &fAPI! &7(#ff8800 example)"; String colored = ColorAPI.color(raw); // converts & + hex to server formatting player.sendMessage(colored); }``` 
 
 ---
@@ -279,7 +279,7 @@ public void sendColored(Player player) { String raw = "&aWelcome &bto &6Tropic &
 ### CenteredMessagesAPI
 ```
 
-java // import com.okbeanok.tropicapi.api.message.CenteredMessagesAPI; import org.bukkit.command.CommandSender;
+java // import com.okbeanok.nexusapi.api.message.CenteredMessagesAPI; import org.bukkit.command.CommandSender;
 public void sendCentered(CommandSender sender) { String message = "&b&lTropicAPI &7- &fAll-in-one utilities!"; CenteredMessagesAPI.send(sender, message); }```
 
 Only getting the centered line:
@@ -294,7 +294,7 @@ java String centered = CenteredMessagesAPI.center("&eCentered text!"); // send w
 #### Basic GUI (using `GUI`)
 ```
 
-java // import com.okbeanok.tropicapi.api.gui.GUI; // import com.okbeanok.tropicapi.api.gui.GUIClickEvent; import org.bukkit.entity.Player; import org.bukkit.Material; import org.bukkit.inventory.ItemStack;
+java // import com.okbeanok.nexusapi.api.gui.GUI; // import com.okbeanok.nexusapi.api.gui.GUIClickEvent; import org.bukkit.entity.Player; import org.bukkit.Material; import org.bukkit.inventory.ItemStack;
 public class ExampleGUI extends GUI {
 public ExampleGUI(Player player) {
 super(player, "&aExample &2Menu", 3 * 9); // 3 rows
@@ -323,7 +323,7 @@ java public void openExample(Player player) { new ExampleGUI(player).open(); }``
 #### Confirmation GUI (`ConfirmGUI`)
 ```
 
-java // import com.okbeanok.tropicapi.api.gui.ConfirmGUI; import org.bukkit.entity.Player;
+java // import com.okbeanok.nexusapi.api.gui.ConfirmGUI; import org.bukkit.entity.Player;
 public void deleteSomething(Player player) { ConfirmGUI.open( player, "&cConfirm deletion", () -> { // on confirm }, () -> { // on cancel } ); }```
 
 #### Paginated GUI (`PaginatedGUI<T>`)
@@ -331,7 +331,7 @@ public void deleteSomething(Player player) { ConfirmGUI.open( player, "&cConfirm
 You extend `PaginatedGUI` and implement `rebuild()` to draw items for each page.
 ```
 
-java // import com.okbeanok.tropicapi.api.gui.PaginatedGUI; // import com.okbeanok.tropicapi.api.gui.GUIClickEvent; import org.bukkit.entity.Player; import org.bukkit.Material; import org.bukkit.inventory.ItemStack;
+java // import com.okbeanok.nexusapi.api.gui.PaginatedGUI; // import com.okbeanok.nexusapi.api.gui.GUIClickEvent; import org.bukkit.entity.Player; import org.bukkit.Material; import org.bukkit.inventory.ItemStack;
 import java.util.List;
 public class ExamplePaginatedGUI extends PaginatedGUI{
 public ExamplePaginatedGUI(Player player, List<String> entries) {
@@ -363,7 +363,7 @@ public void onClick(GUIClickEvent event) {
 #### ItemBuilder
 ```
 
-java // import com.okbeanok.tropicapi.api.gui.ItemBuilder; import org.bukkit.Material; import org.bukkit.inventory.ItemStack;
+java // import com.okbeanok.nexusapi.api.gui.ItemBuilder; import org.bukkit.Material; import org.bukkit.inventory.ItemStack;
 ItemStack item = ItemBuilder.of(Material.DIAMOND_SWORD) .name("§bCool Sword") .lore("§7Line 1", "§7Line 2") .unbreakable(true) .build();```
 
 ---
@@ -373,20 +373,20 @@ ItemStack item = ItemBuilder.of(Material.DIAMOND_SWORD) .name("§bCool Sword") .
 Using the static facade:
 ```
 
-java // import com.okbeanok.tropicapi.api.message.Messages; import org.bukkit.command.CommandSender;
+java // import com.okbeanok.nexusapi.api.message.Messages; import org.bukkit.command.CommandSender;
 public void notifySave(CommandSender sender, boolean success) { if (success) { Messages.success(sender, "&aYour settings have been saved."); } else { Messages.error(sender, "&cFailed to save your settings."); } }``` 
 
 Placeholders:
 ```
 
-java // import com.okbeanok.tropicapi.api.message.Messages; import org.bukkit.command.CommandSender;
+java // import com.okbeanok.nexusapi.api.message.Messages; import org.bukkit.command.CommandSender;
 import java.util.Map;
 public void greet(CommandSender sender) { String template = "&bHello, {player}&7! You have &e{coins} &7coins."; String formatted = Messages.format(template, Map.of); Messages.info(sender, formatted); }```
 
 Via `MessageService` from the plugin instance:
 ```
 
-java // import com.okbeanok.tropicapi.TropicAPI; // import com.okbeanok.tropicapi.api.message.MessageService; import org.bukkit.command.CommandSender;
+java // import com.okbeanok.nexusapi.TropicAPI; // import com.okbeanok.nexusapi.api.message.MessageService; import org.bukkit.command.CommandSender;
 public void sendFromService(CommandSender sender) { MessageService ms = TropicAPI.getInstance().getMessageService(); ms.sendInfo(sender, "&7This came from MessageService directly."); }``` 
 
 ---
@@ -394,7 +394,7 @@ public void sendFromService(CommandSender sender) { MessageService ms = TropicAP
 ### Tasks
 ```
 
-java // import com.okbeanok.tropicapi.api.task.Tasks;
+java // import com.okbeanok.nexusapi.api.task.Tasks;
 // Sync Tasks.runSync(() -> { // modify world, players, etc. });
 // Async Tasks.runAsync(() -> { // heavy DB / HTTP / computations });```
 
@@ -408,7 +408,7 @@ Tasks.runTimerSync(() -> { // runs every second, after initial 2-sec delay }, 20
 Async with result:
 ```
 
-java import java.util.concurrent.CompletableFuture; // import com.okbeanok.tropicapi.api.task.Tasks;
+java import java.util.concurrent.CompletableFuture; // import com.okbeanok.nexusapi.api.task.Tasks;
 public void loadSomethingAsync() { CompletableFuturefuture = Tasks.supplyAsync(() -> { // heavy computation return "result"; });
 future.thenAccept(result -> {
 Tasks.runSync(() -> {
@@ -422,7 +422,7 @@ Tasks.runSync(() -> {
 ### Configs
 ```
 
-java // import com.okbeanok.tropicapi.api.config.Configs; // import com.okbeanok.tropicapi.api.config.ConfigHandle; import org.bukkit.configuration.file.FileConfiguration; import org.bukkit.plugin.java.JavaPlugin;
+java // import com.okbeanok.nexusapi.api.config.Configs; // import com.okbeanok.nexusapi.api.config.ConfigHandle; import org.bukkit.configuration.file.FileConfiguration; import org.bukkit.plugin.java.JavaPlugin;
 public class ExamplePlugin extends JavaPlugin {
 @Override
 public void onEnable() {
@@ -444,7 +444,7 @@ java ConfigHandle messages = Configs.load(this, "messages.yml"); String prefix =
 ### Player Profiles & PlayerContext
 ```
 
-java // import com.okbeanok.tropicapi.TropicAPI; // import com.okbeanok.tropicapi.api.player.PlayerProfileService; // import com.okbeanok.tropicapi.api.player.PlayerProfile; import org.bukkit.entity.Player;
+java // import com.okbeanok.nexusapi.TropicAPI; // import com.okbeanok.nexusapi.api.player.PlayerProfileService; // import com.okbeanok.nexusapi.api.player.PlayerProfile; import org.bukkit.entity.Player;
 public void logProfile(Player player) { PlayerProfileService service = TropicAPI.getInstance().getPlayerProfileService(); PlayerProfile profile = service.getProfile(player);
 getLogger().info("Player " + profile.getLastKnownName() +
 		" joined first at " + profile.getFirstJoin() +
@@ -454,13 +454,13 @@ getLogger().info("Player " + profile.getLastKnownName() +
 Async load:
 ```
 
-java // import com.okbeanok.tropicapi.api.player.PlayerProfileService; // import com.okbeanok.tropicapi.api.task.Tasks; import java.util.UUID;
+java // import com.okbeanok.nexusapi.api.player.PlayerProfileService; // import com.okbeanok.nexusapi.api.task.Tasks; import java.util.UUID;
 public void loadProfileAsync(UUID uuid) { PlayerProfileService service = TropicAPI.getInstance().getPlayerProfileService(); service.loadProfile(uuid).thenAccept(profile -> { if (profile == null) return; Tasks.runSync(() -> { // use profile safely on main thread }); }); }```
 
 `PlayerContext`:
 ```
 
-java // import com.okbeanok.tropicapi.api.player.PlayerContext; import org.bukkit.entity.Player;
+java // import com.okbeanok.nexusapi.api.player.PlayerContext; import org.bukkit.entity.Player;
 public void setCurrentMenu(Player player, String menuId) { PlayerContext.set(player, "current-menu", menuId); }
 public String getCurrentMenu(Player player) { return PlayerContext.get(player, "current-menu", String.class); }``` 
 
@@ -471,13 +471,13 @@ public String getCurrentMenu(Player player) { return PlayerContext.get(player, "
 Check other Tropic plugins:
 ```
 
-java // import com.okbeanok.tropicapi.api.integration.TropicPluginsAPI;
+java // import com.okbeanok.nexusapi.api.integration.TropicPluginsAPI;
 boolean hasTropicChat = TropicPluginsAPI.isPresent("TropicChatCore"); TropicPluginsAPI.getInfo("TropicChatCore").ifPresent(info -> { getLogger().info("TropicChatCore version: " + info.getVersion()); });```
 
 Use the internal event bus:
 ```
 
-java // import com.okbeanok.tropicapi.api.event.TropicEvents;
+java // import com.okbeanok.nexusapi.api.event.TropicEvents;
 public record AuctionCreatedEvent(String auctionId) {}
 // Register a listener TropicEvents.listen(AuctionCreatedEvent.class, event -> { getLogger().info("Auction created: " + event.auctionId()); });
 // Post event somewhere TropicEvents.post(new AuctionCreatedEvent("abc123"));``` 
@@ -489,25 +489,25 @@ public record AuctionCreatedEvent(String auctionId) {}
 Cooldowns:
 ```
 
-java // import com.okbeanok.tropicapi.api.util.Cooldowns; import org.bukkit.entity.Player;
+java // import com.okbeanok.nexusapi.api.util.Cooldowns; import org.bukkit.entity.Player;
 import java.util.concurrent.TimeUnit;
 public boolean tryUseCommand(Player player) { boolean allowed = Cooldowns.checkAndApply("myplugin:mycommand", player, 10, TimeUnit.SECONDS); return allowed; }```
 
 Durations:
 ```
 
-java // import com.okbeanok.tropicapi.api.util.Durations;
+java // import com.okbeanok.nexusapi.api.util.Durations;
 String pretty = Durations.formatSeconds(123); // "2m 3s"``` 
 
 Permissions:
 ```
 
-java // import com.okbeanok.tropicapi.api.util.Perms; import org.bukkit.command.CommandSender;
+java // import com.okbeanok.nexusapi.api.util.Perms; import org.bukkit.command.CommandSender;
 public void execute(CommandSender sender) { Perms.require(sender, "myplugin.use", () -> { // allowed }, () -> sender.sendMessage("No permission.") ); }```
 
 Logging with module name:
 ```
 
-java // import com.okbeanok.tropicapi.api.util.TropicLog;
+java // import com.okbeanok.nexusapi.api.util.TropicLog;
 TropicLog.info("auctions", "Loaded 10 auctions."); TropicLog.warn("moderation", "No default rules configured."); TropicLog.error("chat", "Failed to connect to chat backend.");``` 
 

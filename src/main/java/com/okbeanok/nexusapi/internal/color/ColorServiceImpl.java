@@ -24,11 +24,11 @@ public class ColorServiceImpl implements ColorService {
 	private static final Pattern GRADIENT_PATTERN = Pattern.compile(
 			"<(?<type>gradient|g)(#(?<speed>\\d+))?(?<hex>(:#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})){2,})(:(?<loop>l|L|loop))?>"
 	);
-	private static final List<Pattern> HEX_PATTERNS = Arrays.asList(
-			Pattern.compile("<#([A-Fa-f0-9]){6}>"),   // <#FFFFFF>
-			Pattern.compile("\\{#([A-Fa-f0-9]){6}}"), // {#FFFFFF}
-			Pattern.compile("&#([A-Fa-f0-9]){6}"),    // &#FFFFFF
-			Pattern.compile("#([A-Fa-f0-9]){6}")      // #FFFFFF
+	private static final Pattern HEX_PATTERN = Pattern.compile(
+			"<(#[A-Fa-f0-9]{6})>|" +
+					"\\{(#[A-Fa-f0-9]{6})}|"+
+					"(&#[A-Fa-f0-9]{6})|" +
+					"(#[A-Fa-f0-9]{6})"
 	);
 
 
@@ -261,20 +261,22 @@ public class ColorServiceImpl implements ColorService {
 			return message;
 		}
 
-		String parsed = message;
+		Matcher matcher = HEX_PATTERN.matcher(message);
+		StringBuffer result = new StringBuffer();
 
-		for (Pattern pattern : HEX_PATTERNS) {
-			Matcher matcher = pattern.matcher(parsed);
-			while (matcher.find()) {
-				String color = translateHex(cleanHex(matcher.group())).toString();
-				String before = parsed.substring(0, matcher.start());
-				String after = parsed.substring(matcher.end());
-				parsed = before + color + after;
-				matcher = pattern.matcher(parsed);
-			}
+		while (matcher.find()) {
+			String hex = matcher.group();
+
+			String color = translateHex(cleanHex(hex)).toString();
+
+			matcher.appendReplacement(
+					result,
+					Matcher.quoteReplacement(color)
+			);
 		}
 
-		return parsed;
+		matcher.appendTail(result);
+		return result.toString();
 	}
 
 	private static String parseLegacy(String message) {

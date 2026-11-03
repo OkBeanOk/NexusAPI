@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fccd74d-3f35-463c-bb25-6eaf92aa63b9" name="Changes" comment="Fixed issue with imports">
+    <list default="true" id="5fccd74d-3f35-463c-bb25-6eaf92aa63b9" name="Changes" comment="skip unnecessary regex processing when the input doesn't contain the relevant formatting syntax.&#10;&#10;Fix an issue with rainbow loop settings not being ignored.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TropicAPI.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okbeanok/nexusapi/internal/color/ColorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okbeanok/nexusapi/internal/color/ColorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TropicAPI-1.4.4-shaded.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TropicAPI-1.4.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TropicAPI-1.4.5-shaded.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/TropicAPI-1.4.5.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$AnimatedGradient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$AnimatedGradient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$AnimatedRainbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$AnimatedRainbow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$ChatColorHexMapping.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$ChatColorHexMapping.class" afterDir="false" />
@@ -21,8 +15,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$Gradient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$Gradient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$Rainbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl$Rainbow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/okbeanok/nexusapi/internal/color/ColorServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,61 +106,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.0866508614321626" />
-      <entry key="MS500" value="3.7656617415870146" />
-      <entry key="S2" value="7.49592446437816" />
-      <entry key="S5" value="10.225701582058864" />
-      <entry key="S10" value="12.058270639635747" />
-      <entry key="S30" value="17.300395309963164" />
-      <entry key="S60" value="26.206972852729447" />
-      <entry key="M2" value="37.93272455981893" />
-      <entry key="M5" value="56.972468388504865" />
-      <entry key="M10" value="83.72502878537216" />
-      <entry key="M15" value="102.95941560744173" />
-      <entry key="M30" value="133.08361611491665" />
-      <entry key="H1" value="154.2385084515634" />
-      <entry key="H2" value="166.82916701606845" />
-      <entry key="H4" value="173.70464016397375" />
-      <entry key="D1" value="179.75382885142244" />
-      <entry key="W1" value="180.82121900210478" />
+      <entry key="MS100" value="1.029065694456455" />
+      <entry key="MS500" value="2.1351112795676" />
+      <entry key="S2" value="5.248034464952971" />
+      <entry key="S5" value="7.756682236294273" />
+      <entry key="S10" value="10.036380810371003" />
+      <entry key="S30" value="19.84503668907628" />
+      <entry key="S60" value="30.956216994132106" />
+      <entry key="M2" value="42.5278293280426" />
+      <entry key="M5" value="63.04725303878806" />
+      <entry key="M10" value="93.13702264618667" />
+      <entry key="M15" value="117.341862148695" />
+      <entry key="M30" value="160.36010163221135" />
+      <entry key="H1" value="194.18599453043498" />
+      <entry key="H2" value="215.66637461295804" />
+      <entry key="H4" value="227.807177435187" />
+      <entry key="D1" value="238.72402741613172" />
+      <entry key="W1" value="240.6729150764784" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="3.739745141583632E-126" />
-      <entry key="MS500" value="8.214259171308657E-26" />
-      <entry key="S2" value="5.353552923553504E-7" />
-      <entry key="S5" value="0.0031006792299925596" />
-      <entry key="S10" value="0.055683742959615784" />
-      <entry key="S30" value="0.38186466469654257" />
-      <entry key="S60" value="0.6179589484795869" />
-      <entry key="M2" value="0.7887367038189758" />
-      <entry key="M5" value="1.00121818062162" />
-      <entry key="M10" value="1.2579620676111998" />
-      <entry key="M15" value="1.4214826972173367" />
-      <entry key="M30" value="1.6571827045693093" />
-      <entry key="H1" value="1.812436092041664" />
-      <entry key="H2" value="1.901770756920059" />
-      <entry key="H4" value="1.9497179673654865" />
-      <entry key="D1" value="1.991452575374203" />
-      <entry key="W1" value="1.9987747813638885" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.2307340623480023E-111" />
+      <entry key="S5" value="5.4875579499174984E-45" />
+      <entry key="S10" value="7.40780530921101E-23" />
+      <entry key="S30" value="4.199812030897413E-8" />
+      <entry key="S60" value="2.049367362274947E-4" />
+      <entry key="M2" value="0.014363561761422238" />
+      <entry key="M5" value="0.2016790398698609" />
+      <entry key="M10" value="0.5645904978878318" />
+      <entry key="M15" value="0.8332697007265405" />
+      <entry key="M30" value="1.268797745844508" />
+      <entry key="H1" value="1.5858923533975964" />
+      <entry key="H2" value="1.7789496922988035" />
+      <entry key="H4" value="1.8857084391437744" />
+      <entry key="D1" value="1.9804038426616883" />
+      <entry key="W1" value="1.9971868077228658" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.954385413017412" />
-      <entry key="MS500" value="3.716621042355871" />
-      <entry key="S2" value="7.473378874431023" />
-      <entry key="S5" value="10.19938577035847" />
-      <entry key="S10" value="12.065284980957298" />
-      <entry key="S30" value="17.63170466760323" />
-      <entry key="S60" value="26.78900956360575" />
-      <entry key="M2" value="38.69936676139603" />
-      <entry key="M5" value="57.96222228532273" />
-      <entry key="M10" value="84.97573235605364" />
-      <entry key="M15" value="104.37544219347896" />
-      <entry key="M30" value="134.73763629164227" />
-      <entry key="H1" value="156.04922218004293" />
-      <entry key="H2" value="168.73003623410182" />
-      <entry key="H4" value="175.6538965601845" />
-      <entry key="D1" value="181.7452029335971" />
-      <entry key="W1" value="182.81998253096737" />
+      <entry key="MS100" value="1.0145123189828378" />
+      <entry key="MS500" value="2.126957303256128" />
+      <entry key="S2" value="5.242559758283604" />
+      <entry key="S5" value="7.7533501272952625" />
+      <entry key="S10" value="10.03419100569474" />
+      <entry key="S30" value="19.84282925498475" />
+      <entry key="S60" value="30.953577094093863" />
+      <entry key="M2" value="42.53921988165081" />
+      <entry key="M5" value="63.245110607018674" />
+      <entry key="M10" value="93.69749244066534" />
+      <entry key="M15" value="118.17133201699832" />
+      <entry key="M30" value="161.62616357700887" />
+      <entry key="H1" value="195.77021901969312" />
+      <entry key="H2" value="217.44439969157844" />
+      <entry key="H4" value="229.69239857897836" />
+      <entry key="D1" value="240.704346356234" />
+      <entry key="W1" value="242.67008966202113" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -356,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793428341228</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="skip unnecessary regex processing when the input doesn't contain the relevant formatting syntax.&#10;&#10;Fix an issue with rainbow loop settings not being ignored.">
+      <option name="closed" value="true" />
+      <created>1793439468894</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1793439468894</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +385,8 @@
     <MESSAGE value="Introducing the new ParticleAPI which will be used for Holograms and L2D down the line." />
     <MESSAGE value="Fixed an issue with Kotlin not showing as SRC, bumped ver." />
     <MESSAGE value="Fixed issue with imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with imports" />
+    <MESSAGE value="skip unnecessary regex processing when the input doesn't contain the relevant formatting syntax.&#10;&#10;Fix an issue with rainbow loop settings not being ignored." />
+    <option name="LAST_COMMIT_MESSAGE" value="skip unnecessary regex processing when the input doesn't contain the relevant formatting syntax.&#10;&#10;Fix an issue with rainbow loop settings not being ignored." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -394,6 +395,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/okbeanok/tropicapi/api/color/ColorAPI.java</url>
           <line>520</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/okbeanok/nexusapi/api/color/ColorAPI.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
